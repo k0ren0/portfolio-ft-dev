@@ -1,16 +1,14 @@
 // projectsSlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const fetchProjects = createAsyncThunk(
   'projects/fetchProjects',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://localhost:5050/api/projects');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const projects = await response.json();
-      return projects;
+      const response = await axios.get('http://localhost:5050/api/projects');
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -46,20 +44,24 @@ export default projectsSlice.reducer;
 
 
 
+// // projectsSlice.js
 // import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// export const fetchProjects = createAsyncThunk('projects/fetchProjects', async (_, { rejectWithValue }) => {
-//   try {
-//     const response = await fetch('http://localhost:5050/api/projects');
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
+// export const fetchProjects = createAsyncThunk(
+//   'projects/fetchProjects',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const response = await fetch('http://localhost:5050/api/projects');
+//       if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//       }
+//       const projects = await response.json();
+//       return projects;
+//     } catch (error) {
+//       return rejectWithValue(error.message);
 //     }
-//     const projects = await response.json();
-//     return projects;
-//   } catch (error) {
-//     return rejectWithValue(error.message);
 //   }
-// });
+// );
 
 // const projectsSlice = createSlice({
 //   name: 'projects',
@@ -68,10 +70,12 @@ export default projectsSlice.reducer;
 //     loading: false,
 //     error: null,
 //   },
+//   reducers: {},
 //   extraReducers: (builder) => {
 //     builder
 //       .addCase(fetchProjects.pending, (state) => {
 //         state.loading = true;
+//         state.error = null;
 //       })
 //       .addCase(fetchProjects.fulfilled, (state, action) => {
 //         state.loading = false;
@@ -85,3 +89,6 @@ export default projectsSlice.reducer;
 // });
 
 // export default projectsSlice.reducer;
+
+
+
