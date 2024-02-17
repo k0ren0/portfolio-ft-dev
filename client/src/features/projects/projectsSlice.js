@@ -1,5 +1,3 @@
-// projectsSlice.js
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -41,6 +39,7 @@ const projectsSlice = createSlice({
 });
 
 export default projectsSlice.reducer;
+
 
 
 
