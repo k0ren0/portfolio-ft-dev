@@ -1,18 +1,35 @@
 // Menu.js
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="flex justify-end space-x-4 bg-gray-700 p-3 md:space-x-10 fixed top-0 right-0 w-full z-10">
-      <NavLink to="/" className="text-white">Home</NavLink>
-      <NavLink to="/about" className="text-white">About</NavLink>
-      <NavLink to="/projects" className="text-white">Projects</NavLink>
+    <nav className="flex justify-between items-center bg-gray-700 p-3 md:p-5 fixed top-0 right-0 w-full z-10">
+      <div className="flex items-center">
+        <div className="text-white mr-4">Viktor Korneev</div>
+        <button className="text-white focus:outline-none md:hidden" onClick={toggleMenu}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+      <div className={`md:flex md:space-x-4 ${isOpen ? 'block' : 'hidden'}`}>
+        <NavLink to="/" className="text-white hover:text-gray-400">Home</NavLink>
+        <NavLink to="/about" className="text-white hover:text-gray-400">About</NavLink>
+        <NavLink to="/projects" className="text-white hover:text-gray-400">Projects</NavLink>
+      </div>
     </nav>
   );
 };
 
 export default Menu;
+
 
 
 
