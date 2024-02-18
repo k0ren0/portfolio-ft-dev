@@ -37,7 +37,7 @@ const projects = [
       ],
       links: {
         github: "https://github.com/k0ren0/portfolio-ft-js-dev.git",
-        demo: "https://www.example.com"
+        demo: "https://www.loom.com/share/3126a0aa60404f8fb0be47467964fb03?sid=6e92934c-93ac-47aa-9d95-c6636e46c07e"
       }
     }
   ];

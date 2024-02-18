@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const SERVER = process.env.REACT_APP_SERVER_URL || `http://localhost:5050/api/projects`;
+// const SERVER = process.env.REACT_APP_SERVER_URL || `http://localhost:5050/api/projects`;
+const SERVER = "https://portfolio-server-ta3b.onrender.com/api/projects";
+
 
 export const fetchProjects = createAsyncThunk(
   'projects/fetchProjects',
