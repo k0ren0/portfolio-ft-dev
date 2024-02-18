@@ -2,6 +2,7 @@ import React from 'react';
 import About from './about/About';
 import Home from './Home/Home';
 import Projects from './projects/Projects';
+import ContactForm from '../components/ContactForm';
 
 const AppContent = () => {
   return (
@@ -15,7 +16,10 @@ const AppContent = () => {
       <div id="projects-section">
         <Projects />
       </div>
-     
+      <div id="contact-section">
+        <ContactForm />
+      </div>
+    
     </div>
   );
 };
