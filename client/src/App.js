@@ -5,7 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Menu from './components/Menu';
-import AppContent from './features/AppContent'; 
+import AppContent from './features/Appcontent';
 import './index.css';
 import projectsReducer, { fetchProjects } from './features/projects/projectsSlice';
 
