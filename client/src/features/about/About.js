@@ -7,10 +7,10 @@ const About = () => {
   const logoStyle = "h-[3rem] w-[3rem] md:h-[4rem] md:w-[4rem] lg:h-[5rem] lg:w-[5rem]";
 
   return (
-    <div className="p-2 rounded-lg">
-      <div className="text-center mb-4">
-        <h2 className="text-3xl font-bold mb-6">About Me</h2>
-        <p className="text-left mt-2">I have experience in JavaScript and Python, developed over a course and through more than four years of previous experience in the high-tech industry. I leverage strong skills in continuous self-education and effective communication to drive innovation in startup environments. I have a proven track record in project management, especially within high-tech (DLP systems) and the construction industry, where my efforts have significantly contributed to companies achieving market leadership. I would be happy to utilize my extensive professional experience and knowledge in the role of a Full Stack Developer.</p>
+    <div className="p-14 rounded-lg mt-2">
+      <div className="text-center mb-2">
+        <h2 className="text-3xl font-bold mb-2">About Me</h2>
+        <p className="text-left mt-4">I have experience in JavaScript and Python, developed over a course and through more than four years of previous experience in the high-tech industry. I leverage strong skills in continuous self-education and effective communication to drive innovation in startup environments. I have a proven track record in project management, especially within high-tech (DLP systems) and the construction industry, where my efforts have significantly contributed to companies achieving market leadership. I would be happy to utilize my extensive professional experience and knowledge in the role of a Full Stack Developer.</p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 justify-items-center">
         {/* Blocks for each technology */}

@@ -1,10 +1,12 @@
 // server.js
 
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 5050;
+import express from 'express';
+import projects from './projectsData.js';
 
-const projects = require('./projectsData'); 
+const app = express();
+
+
+
 
 app.use(express.json());
 
@@ -17,8 +19,6 @@ app.get('/api/projects', (req, res) => {
   res.json(projects);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
