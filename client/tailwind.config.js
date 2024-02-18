@@ -8,6 +8,8 @@ module.exports = {
           'sans-serif'],
         mono: ['source-code-pro', 'Menlo', 'Monaco', 'Consolas', '"Courier New"',
           'monospace'],
+        roboto: ['Roboto', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },

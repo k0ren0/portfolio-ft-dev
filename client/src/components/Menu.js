@@ -8,7 +8,7 @@ const Menu = () => {
   };
 
   const scrollToSection = (sectionId) => {
-    setIsOpen(false); // Закрыть меню при выборе пункта
+    setIsOpen(false); // Close the menu when a section is selected
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
@@ -17,9 +17,9 @@ const Menu = () => {
 
   return (
     <nav className="flex justify-between items-center bg-gray-700 p-3 md:p-5 fixed top-0 w-full z-10">
-      <div className="text-white mr-4">Viktor Korneev</div>
+      <div className="text-white mr-4 font-poppins text-3xl">Viktor Korneev's Portfolio</div>
       <button className="text-white focus:outline-none md:hidden" onClick={toggleMenu}>
-        {/* SVG иконка меню для мобильных устройств */}
+        {/* Menu icon for mobile devices */}
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           {isOpen ? (
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -32,13 +32,14 @@ const Menu = () => {
         <button onClick={() => scrollToSection('home-section')} className="text-white hover:text-gray-400 p-2 md:py-0 md:px-3">Home</button>
         <button onClick={() => scrollToSection('about-section')} className="text-white hover:text-gray-400 p-2 md:py-0 md:px-3">About</button>
         <button onClick={() => scrollToSection('projects-section')} className="text-white hover:text-gray-400 p-2 md:py-0 md:px-3">Projects</button>
-        {/* Дополнительные ссылки */}
+        {/* Additional links if needed */}
       </div>
     </nav>
   );
 };
 
 export default Menu;
+
 
 
 

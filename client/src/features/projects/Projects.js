@@ -24,7 +24,7 @@ const Projects = () => {
 
   return (
     <div className="bg-blue-50 p-8 rounded-lg">
-      <h2 className="text-3xl font-bold mb-6">Projects</h2>
+      <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
       {projects.map(project => (
         <div key={project.id} className="flex items-center justify-between mb-8">
           <div className="w-4/4 pr-12">
