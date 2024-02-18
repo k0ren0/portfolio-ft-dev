@@ -1,7 +1,7 @@
 // server.js
 
 import express from 'express';
-import projects from './projectsData.js';
+import projectsRouter from './projectsRouter.js';;
 
 const app = express();
 
@@ -12,10 +12,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/projects', (req, res) => {
-  res.json(projects);
-});
+app.use('/api/projects', projectsRouter);
 
-const SERVER = process.env.SERVER || 5050;
-app.listen(SERVER, () => console.log(`Server running on port ${SERVER}`));
+const PORT = process.env.PORT || 5050;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 

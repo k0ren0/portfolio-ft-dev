@@ -1,11 +1,12 @@
 // projectsRouter.js
 
-const express = require('express');
+import express from 'express';
+import projects from './projectsData.js'; 
+
 const router = express.Router();
-const projects = require('./projectsData');
 
 router.get('/', (req, res) => {
   res.json(projects);
 });
 
-module.exports = router;
+export default router; 
