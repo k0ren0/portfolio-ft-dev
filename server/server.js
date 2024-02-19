@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 
 app.use('/api/projects', projectsRouter);
 
-// Настройка транспорта nodemailer
+// settings nodemailer
 const transporter = nodemailer.createTransport({
   service: process.env.EMAIL_SERVICE,
   auth: {
@@ -45,13 +45,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Маршрут для отправки email
+// routes to send email
 app.post('/api/send-email', (req, res) => {
   const { name, email, message } = req.body;
   
   const mailOptions = {
     from: `"${name}" <${email}>`,
-    to: 'korneevv@gmail.com', // Замените на адрес, на который должны приходить письма
+    to: 'korneevv@gmail.com', // my email 
     subject: 'New Contact Form Submission',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`
