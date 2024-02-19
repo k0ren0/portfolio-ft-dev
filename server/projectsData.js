@@ -21,7 +21,7 @@ const projects = [
     { 
       id: 2, 
       name: "Final Project by JavaScript (Dog Walking and Animal Assistance Platform)",
-      description: "I created a platform linking dog owners with volunteers for walks and assistance. It should facilitate easy coordination, have a user-friendly interface with simple navigation, and organize events efficiently. The technology stack includes React and Redux for the frontend, Node.js and PostgreSQL for the backend, with Bootstrap or Tailwind CSS for styling, and Google Maps API for location services. Security is managed through JWT and bcrypt, with ElephantSQL and Axios or Fetch API supporting cloud storage and HTTP requests.",
+      description: "I created a platform linking dog owners with volunteers for walks and assistance. It should facilitate easy coordination, have a user-friendly interface with simple navigation, and organize events efficiently. The technology stack includes React and Redux for the frontend, Node.js and PostgreSQL for the backend, with  Tailwind CSS for styling, and Google Maps API for location services. Security is managed through JWT and bcrypt, with ElephantSQL and Axios or Fetch API supporting cloud storage and HTTP requests.",
       bgColor: "bg-yellow-200",
       technologies: [
         { name: "JavaScript", icon: "faJs" },
