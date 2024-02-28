@@ -22,7 +22,7 @@ const Projects = () => {
 //bg-blue-50
   return (
     <div className="p-8 rounded-lg"> 
-      <h2 className="text-3xl font-bold text-center mb-6">Projects</h2>
+      <h2 className="text-3xl font-bold text-center mt-14 mb-6">Projects</h2>
       {projects.map(project => (
         <Project key={project.id} project={project} />
       ))}
