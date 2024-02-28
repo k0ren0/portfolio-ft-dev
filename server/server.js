@@ -47,16 +47,19 @@ app.post('/api/send-email', (req, res) => {
     html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`
   };
 
+  console.log("Attempting to send email with options:", mailOptions);
+
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error("Error sending email:", error);
-      return res.status(500).send('Error sending email');
+      res.status(500).send('Error sending email');
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).send('Email sent successfully');
     }
-    console.log('Email sent: ' + info.response);
-    res.status(200).send('Email sent successfully');
   });
-  
 });
+
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
