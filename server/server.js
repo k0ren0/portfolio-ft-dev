@@ -14,7 +14,7 @@ app.use(express.json());
 
 
 const corsOptions = {
-    origin: process.env.REACT_APP_SERVER_URL_SEND, 
+    origin: process.env.REACT_APP_CLIENT_URL_SEND, 
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
