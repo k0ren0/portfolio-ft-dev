@@ -49,13 +49,13 @@ app.post('/api/send-email', (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log(error);
-      res.status(500).send('Error sending email');
-    } else {
-      console.log('Email sent: ' + info.response);
-      res.status(200).send('Email sent successfully');
+      console.error("Error sending email:", error);
+      return res.status(500).send('Error sending email');
     }
+    console.log('Email sent: ' + info.response);
+    res.status(200).send('Email sent successfully');
   });
+  
 });
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
