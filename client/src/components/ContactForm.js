@@ -14,7 +14,7 @@ const ContactForm = () => {
         setLoading(true);
         try {
             // Используем переменную окружения для определения URL сервера
-            const serverUrl = `${process.env.REACT_APP_SERVER_URL_SEND}api/send-email`;
+            const serverUrl = `${process.env.REACT_APP_SERVER_URL_SEND}/api/send-email`;
             await axios.post(serverUrl, { name, email, message });
             setLoading(false);
             setSnackbarMessage('Message sent successfully');
