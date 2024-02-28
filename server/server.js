@@ -4,7 +4,7 @@ import express from 'express';
 import projectsRouter from './projectsRouter.js';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import cors from 'cors'; // Убедитесь, что вы установили пакет cors
+import cors from 'cors'; 
 
 dotenv.config();
 
@@ -13,9 +13,17 @@ const app = express();
 app.use(express.json());
 
 
-app.use(cors({
+const corsOptions = {
     origin: process.env.REACT_APP_SERVER_URL_SEND, 
-}));
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 
 app.use('/api/projects', projectsRouter);
 
