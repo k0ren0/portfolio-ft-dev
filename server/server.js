@@ -4,6 +4,7 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import projectsRouter from './projectsRouter.js'; 
 
 dotenv.config();
 
@@ -28,6 +29,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Использование projectsRouter для обработки запросов к /api/projects
+app.use('/api/projects', projectsRouter);
+
 app.post('/api/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -50,6 +54,7 @@ app.post('/api/send-email', async (req, res) => {
 
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 
 
 
