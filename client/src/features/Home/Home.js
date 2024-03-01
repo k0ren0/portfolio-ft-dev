@@ -7,8 +7,8 @@ const Home = () => {
       <div className="container mx-auto px-4">
         {/* Header с ссылкой на скачивание и основным контентом */}
         <header className="flex justify-between items-center py-6">
-          <h1 className="text-2xl font-bold text-gray-800">Welcome to Viktor Korneev's Portfolio</h1>
-          <a href="https://drive.google.com/file/d/103L9ZsyUULMe8GkTnfuhoZKpZi5G96-I/view?usp=sharing" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" download="Viktor_Korneev_Resume">Download CV</a>
+          <h1 className="text-2xl font-bold text-gray-800">Welcome to my Portfolio</h1>
+          <a href="https://drive.google.com/file/d/1RsWpu7tW7P9wLGXuUn6g14YLARhC14-h/view?usp=sharing" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" download="Viktor_Korneev_Resume">Download CV</a>
         </header>
         {/* Основной контент */}
         <main>
