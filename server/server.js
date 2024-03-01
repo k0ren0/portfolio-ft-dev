@@ -1,60 +1,88 @@
-// // server.js
+// // // server.js
+
 
 import express from 'express';
-import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import projectsRouter from './projectsRouter.js'; 
+import projectsRouter from './projectsRouter.js'; // Предполагается, что у вас есть этот файл с роутами для проектов
 
-dotenv.config();
+dotenv.config(); // Загрузка переменных окружения из .env файла
 
-const app = express();
-app.use(express.json());
+const app = express(); // Создание экземпляра приложения express
+app.use(express.json()); // Middleware для парсинга JSON тел запросов
 
+// Настройка CORS для разрешения запросов с определённых источников
 const corsOptions = {
-    origin: process.env.REACT_APP_CLIENT_URL_SEND, 
-    optionsSuccessStatus: 200,
+    origin: process.env.REACT_APP_CLIENT_URL_SEND, // URL вашего клиентского приложения
+    optionsSuccessStatus: 200, // Некоторые браузеры на старых платформах не могут обрабатывать статус 204
 };
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // Применение настроек CORS
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    type: 'OAuth2',
-    user: process.env.EMAIL_USERNAME,
-    pass: process.env.EMAIL_PASSWORD,
-    clientId: process.env.OAUTH_CLIENTID,
-    clientSecret: process.env.OAUTH_CLIENT_SECRET,
-    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-  },
-});
-
-// Использование projectsRouter для обработки запросов к /api/projects
+// Регистрация роутера для обработки запросов к /api/projects
 app.use('/api/projects', projectsRouter);
 
-app.post('/api/send-email', async (req, res) => {
-  const { name, email, message } = req.body;
-
-  try {
-    const response = await transporter.sendMail({
-      from: `"${name}" <${email}>`, 
-      to: process.env.EMAIL_TO, 
-      subject: 'New Contact Form Submission', 
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`, 
-      html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`, 
-    });
-
-    console.log('Email sent: ' + response);
-    res.status(200).send('Email sent successfully');
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).send('Error sending email: ' + error.message);
-  }
-});
-
-
+// Определение порта из переменных окружения или использование порта по умолчанию
 const PORT = process.env.PORT || 5050;
+
+// Запуск сервера для прослушивания входящих запросов на заданном порту
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+// import express from 'express';
+// import nodemailer from 'nodemailer';
+// import dotenv from 'dotenv';
+// import cors from 'cors';
+// import projectsRouter from './projectsRouter.js'; 
+
+// dotenv.config();
+
+// const app = express();
+// app.use(express.json());
+
+// const corsOptions = {
+//     origin: process.env.REACT_APP_CLIENT_URL_SEND, 
+//     optionsSuccessStatus: 200,
+// };
+// app.use(cors(corsOptions));
+
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     type: 'OAuth2',
+//     user: process.env.EMAIL_USERNAME,
+//     pass: process.env.EMAIL_PASSWORD,
+//     clientId: process.env.OAUTH_CLIENTID,
+//     clientSecret: process.env.OAUTH_CLIENT_SECRET,
+//     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+//   },
+// });
+
+// // Использование projectsRouter для обработки запросов к /api/projects
+// app.use('/api/projects', projectsRouter);
+
+// app.post('/api/send-email', async (req, res) => {
+//   const { name, email, message } = req.body;
+
+//   try {
+//     const response = await transporter.sendMail({
+//       from: `"${name}" <${email}>`, 
+//       to: process.env.EMAIL_TO, 
+//       subject: 'New Contact Form Submission', 
+//       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`, 
+//       html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`, 
+//     });
+
+//     console.log('Email sent: ' + response);
+//     res.status(200).send('Email sent successfully');
+//   } catch (error) {
+//     console.error("Error sending email:", error);
+//     res.status(500).send('Error sending email: ' + error.message);
+//   }
+// });
+
+
+// const PORT = process.env.PORT || 5050;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 

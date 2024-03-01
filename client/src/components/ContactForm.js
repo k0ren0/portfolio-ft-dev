@@ -1,17 +1,24 @@
-// Import React and other necessary libraries
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 
 const ContactForm = () => {
-    // Initialize state variables
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
     const [loading, setLoading] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
 
-    // Handle form submission
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -25,29 +32,22 @@ const ContactForm = () => {
         )
         .then((result) => {
             console.log(result.text);
-            // Handle successful email submission
             setLoading(false);
             setSnackbarMessage('Message sent successfully');
             setSnackbarOpen(true);
-            // Reset form fields
-            setName('');
-            setEmail('');
-            setMessage('');
+            setFormData({ name: '', email: '', message: '' }); // Reset form fields
         }, (error) => {
             console.log(error.text);
-            // Handle errors in email submission
             setLoading(false);
             setSnackbarMessage('Error sending message');
             setSnackbarOpen(true);
         });
     };
 
-    // Close the snackbar notification
     const handleCloseSnackbar = () => {
         setSnackbarOpen(false);
     };
 
-    // JSX for the contact form
     return (
         <div className="max-w-md mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-4">Contact Form</h2>
@@ -57,8 +57,8 @@ const ContactForm = () => {
                     <input
                         type="text"
                         name="from_name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={formData.name}
+                        onChange={handleChange}
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     />
@@ -68,8 +68,8 @@ const ContactForm = () => {
                     <input
                         type="email"
                         name="from_email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={handleChange}
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     />
@@ -79,8 +79,8 @@ const ContactForm = () => {
                     <textarea
                         name="message"
                         rows="4"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        value={formData.message}
+                        onChange={handleChange}
                         required
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
                     ></textarea>
@@ -104,6 +104,7 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
 
 
 // import React, { useState } from 'react';
