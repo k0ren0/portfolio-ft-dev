@@ -36,7 +36,7 @@ app.post('/api/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
-    await transporter.sendMail({
+    const response = await transporter.sendMail({
       from: `"${name}" <${email}>`, 
       to: process.env.EMAIL_TO, 
       subject: 'New Contact Form Submission', 
@@ -44,13 +44,14 @@ app.post('/api/send-email', async (req, res) => {
       html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`, 
     });
 
-    console.log('Email sent successfully');
+    console.log('Email sent: ' + response);
     res.status(200).send('Email sent successfully');
   } catch (error) {
     console.error("Error sending email:", error);
-    res.status(500).send('Error sending email');
+    res.status(500).send('Error sending email: ' + error.message);
   }
 });
+
 
 const PORT = process.env.PORT || 5050;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
