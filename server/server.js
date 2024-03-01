@@ -27,12 +27,12 @@ app.use((req, res, next) => {
 
 app.use('/api/projects', projectsRouter);
 
-// Настройки nodemailer для использования с Gmail
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USERNAME, // Ваш Gmail адрес
-    pass: process.env.EMAIL_PASSWORD, // Ваш пароль
+    user: process.env.EMAIL_USERNAME, 
+    pass: process.env.EMAIL_PASSWORD, 
   }
 });
 
