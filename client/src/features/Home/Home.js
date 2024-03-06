@@ -10,7 +10,7 @@ const Home = () => {
       <div className="container mx-auto px-4">
         <header className="flex justify-between items-center py-6">
           <h1 className="text-2xl font-bold text-gray-800">Welcome to my Portfolio</h1>
-          <a href="https://drive.google.com/file/d/1RsWpu7tW7P9wLGXuUn6g14YLARhC14-h/view?usp=sharing" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" download="Viktor_Korneev_Resume">Download CV</a>
+          <a href="https://drive.google.com/file/d/1RsWpu7tW7P9wLGXuUn6g14YLARhC14-h/view?usp=sharing" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110" download="Viktor_Korneev_Resume">Get CV</a>
         </header>
         <main>
           <p className="mt-4 text-gray-600">Hello, I'm Viktor Korneev, a Full Stack Developer with experience in JavaScript, Python, and a strong background in Hi-Tech industries.</p>
